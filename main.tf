@@ -28,6 +28,6 @@ module "ec2" {
 
 module "s3" {
   source = "./modules/s3"
-  #buket = "javxsk-bucket-mar25"
+  #key_name = "javxsk-bucket-mar25"
   
 }
