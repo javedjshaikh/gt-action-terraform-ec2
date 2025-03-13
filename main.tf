@@ -25,3 +25,9 @@ module "ec2" {
   security_group_id      = module.security_group.security_group_id
   key_name               = module.key_pair.key_name
 }
+
+module "s3" {
+  source = "./modules/s3"
+  #buket = "javxsk-bucket-mar25"
+  
+}
