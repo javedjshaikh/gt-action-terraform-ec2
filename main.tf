@@ -1,23 +1,16 @@
 terraform {
-  required_providers {
-    aws = {
-      source  = "hashicorp/aws"
-      version = "~> 4.16"
-    }
-  }
-  required_version = ">= 1.2.0"
-
   backend "s3" {
-    bucket         = "my-terraform-state-bucket-javed"
-    key            = "terraform.tfstate"
-    region         = "ap-southeast-2"
-    encrypt        = true
-    dynamodb_table = "terraform-lock"
+    bucket         = "mytestbucketprod25"  # Name of your S3 bucket
+    key            = "terraform.tfstate"  # Path to store tfstate
+    region         = "ap-southeast-2"  # S3 bucket region
+    encrypt        = true  # Enable encryption of the tfstate file
+    #dynamodb_table = "tfstate-lock-table"  # DynamoDB table for state locking
+    acl            = "private"  # Set S3 ACL for security
   }
 }
-
 provider "aws" {
   region = "ap-southeast-2"
+
 }
 
 resource "aws_instance" "app_server" {
